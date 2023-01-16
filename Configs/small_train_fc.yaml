@@ -1,0 +1,39 @@
+# Data params
+input_dir: /MY_DATA_PATH/processed_input_pyg/
+artifacts: /MY_DATA_PATH/artifacts/
+project: GeometricAttention
+model: GravNet
+gpus: 1 
+nodes: 1
+
+# Dataset parameters
+data_split: [90000,90000,90000]
+
+# Training params
+max_epochs: 3
+lr: 0.003
+factor: 0.9
+patience: 2
+warmup: 10
+scheduler: StepLR
+train_batch: 1
+val_batch: 1
+signal_goal: 0.3 # The efficiency goal for the signal jets
+pos_weight: 1.
+
+# MLP params
+edge_cut: 0.5
+spatial_channels: 3
+layernorm: True
+batchnorm: True
+aggregation: mean_sum
+hidden_activation: SiLU
+output_activation: 
+
+# Layer Structure
+hidden: 32
+n_graph_iters: 3
+nb_node_layer: 3
+nb_edge_layer: 3
+concat_all_layers: True
+layer_shape: flat

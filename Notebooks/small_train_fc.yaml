@@ -1,0 +1,39 @@
+# Data params
+input_dir: /global/cfs/cdirs/m3443/data/NA63/Datasets/Simulation/Processed/Chunked
+artifacts: /global/cfs/cdirs/m3443/data/NA63/Artifacts
+project: NA63_InitialExplore
+model: InteractionGNN
+gpus: 1 
+nodes: 1
+
+# Dataset parameters
+data_split: [400000,200000,90000]
+
+# Training params
+max_epochs: 50
+lr: 0.0003
+factor: 0.9
+patience: 3
+warmup: 10
+scheduler: StepLR
+train_batch: 10000
+val_batch: 10000
+signal_goal: 0.5 # The efficiency goal for the signal jets
+pos_weight: 1.
+
+# MLP params
+edge_cut: 0.5
+spatial_channels: 3
+layernorm: True
+batchnorm: True
+aggregation: sum
+hidden_activation: SiLU
+output_activation: 
+
+# Layer Structure
+hidden: 128
+n_graph_iters: 3
+nb_node_layer: 3
+nb_edge_layer: 3
+concat_all_layers: False
+layer_shape: flat
